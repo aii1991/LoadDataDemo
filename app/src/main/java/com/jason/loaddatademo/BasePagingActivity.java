@@ -85,6 +85,9 @@ public class BasePagingActivity<T> extends AppCompatActivity implements SwipeRef
             @Override
             public void onNext(List<T> list) {
                 if (list == null) return;
+                if (!mQuickAdapter.isLoading()){
+                    mQuickAdapter.openLoadMore(PAGE_SIZE);
+                }
                 mQuickAdapter.getData().clear();
                 mQuickAdapter.addData(list);
                 mQuickAdapter.notifyDataSetChanged();
